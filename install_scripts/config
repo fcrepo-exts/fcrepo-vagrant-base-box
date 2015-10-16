@@ -12,14 +12,6 @@ if [ ! -d $DOWNLOAD_DIR ]; then
   mkdir $DOWNLOAD_DIR
 fi
 
-FEDORA_VERSION=4.4.1-SNAPSHOT
-FEDORA_TAG=4.4.1-SNAPSHOT
-# true to enable auth, false to disable it
-FEDORA_AUTH=true
-FEDORA_AUDIT=true
-FEDORA_AUDIT_LOCATION=/audit
-
-
 FUSEKI_VERSION=2.3.0
 FUSEKI_BASE=/etc/fuseki
 FUSEKI_DEPLOY=/var/lib/tomcat7/webapps

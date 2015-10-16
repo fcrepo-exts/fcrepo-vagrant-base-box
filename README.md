@@ -1,5 +1,5 @@
-# fcrepo4-vagrant
-Fedora 4 Vagrant Virtual Machine 
+# fcrepo4-vagrant-base-box
+This is a base box for the [Fedora 4 Vagrant Virtual Machine](https://github.com/fcrepo4-exts/fcrepo4-vagrant). An packaged box lives on [atlas](https://atlas.hashicorp.com/ruebot/fcrepo4-base).
 
 ## Requirements
 
@@ -8,8 +8,8 @@ Fedora 4 Vagrant Virtual Machine
 
 ## Usage
 
-1. `git clone https://github.com/fcrepo4-exts/fcrepo4-vagrant.git`
-2. `cd fcrepo4-vagrant`
+1. `git clone https://github.com/fcrepo4-exts/fcrepo4-vagrant-base-box.git`
+2. `cd fcrepo4-vagrant-base-box`
 3. `vagrant up`
 
 You can shell into the machine with `vagrant ssh` or `ssh -p 2222 vagrant@localhost`
@@ -17,59 +17,48 @@ You can shell into the machine with `vagrant ssh` or `ssh -p 2222 vagrant@localh
 ## Environment
 
 * Ubuntu 14.04 64-bit machine with: 
-  * [Tomcat 7](http://tomcat.apache.org) at [http://localhost:8080](http://localhost:8080)
+  * [Tomcat 7](http://tomcat.apache.org)
+    * Available at:  [http://localhost:8080](http://localhost:8080)
     * Manager username = "fedora4", password = "fedora4"
-  * [Fedora 4.x](http://fedora.info/about) at [http://localhost:8080/fcrepo](http://localhost:8080/fcrepo)
-    * No authentication configured
-  * [Solr 4.10.3](http://lucene.apache.org/solr/) at [http://localhost:8080/solr](http://localhost:8080/solr), for indexing & searching your content.
-    * Installed in "/var/lib/tomcat7/solr"
-  * [Fuseki 2.3.0](http://jena.apache.org/documentation/fuseki2/) at [http://localhost:8080/fuseki](http://localhost:8080/fuseki), for querying and updating.
-    * Installed in "/etc/fuseki"
-    * Dataset Path name "/test"
-    * Persistent storage "/etc/fuseki/databases/test\_data"
-  * [Fcrepo-camel-toolbox 4.x](https://github.com/fcrepo4-exts/fcrepo-camel-toolbox)
-    * Installed in Tomcat container
+  * [Solr 4.10.3](http://lucene.apache.org/solr/)
+    * Available at: [http://localhost:8080/solr](http://localhost:8080/solr), for indexing & searching your content.
+    * Installed in `/var/lib/tomcat7/solr`
+  * [Apache Karaf](http://karaf.apache.org/)
+    * Installed in `/opt/karaf`
+    * Installed as a service `apache-karaf` 
+  * [Fuseki 2.3.0](http://jena.apache.org/documentation/fuseki2/)
+    * Available at: [http://localhost:8080/fuseki](http://localhost:8080/fuseki), for querying and updating.
+    * Installed in `/etc/fuseki`
+    * Dataset Path name `/test`
+    * Persistent storage `/etc/fuseki/databases/test\_data`
 
 ###Usage
 
 * Install Vagrant and VirtualBox
 * Clone this repository 
-* `cd fcrepo4-vagrant`
-* (optional) to enable role-based access control, edit `install_scripts/config` and change the `FEDORA_AUTH` variable to true.
-  This will enable three accounts:
-  * user account `testuser`, with password `password1`
-  * user account `adminuser`, with password `password2`
-  * admin account `fedoraAdmin` with the password `secret3`
-* (optional) to enable fedora internal audit capability, edit `install_scripts/config` and change the FEDORA_AUDIT variable to true. The FEDORA_AUDIT_LOCATION can also be changed from its default "/audit", if necessary.
+* `cd fcrepo4-vagrant-base-box`
 * `vagrant up`
+
+### How to build base box for Hashicorp
+
+To create a base box to use with Atlas the basic steps are as follows: 
+
+- Clone the repo 
+ - `git clone https://github.com/fcrepo4-exts/fcrepo4-vagrant-base-box`
+ - `fcrepo4-vagrant-base-box`
+- Provision the VM
+ - `vagrant up`
+- Shutdown the VM
+  - `sudo shutdown -P now`
+- Export the VM to a box file 
+ - `vagrant package`
+- [Create a new version on atlas](https://atlas.hashicorp.com/fcrepo/boxes/fcrepo4-base/versions/new)
+- Add a provider (virtualbox)
+- Upload box
 
 ## Support
 
-If you receive the following error:
-```
-There are errors in the configuration of this machine, Please fix the following errors and try again:
-
-vm:
-* The box 'ubuntu/trusty64' could not be found.
-```
-
-Edit the file **Vagrantfile**, find the lines:
-```
-# Below needed for Vagrant versions < 1.6.x
-# config.vm.box_url = "https://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-amd64-vagrant-disk1.box"
-```
-and un-comment the **config.vm.box\_url** line, save the file and retry.
-
-#### Port 9080 (reindexing service) unavailable after vagrant up
-
-It might happen that during the first `vagrant up` the reindexing service is not installed and the port 9080 is inaccessible (try `telnet localhost 9080`). To fix this run `vagrant provision` and check again. If it still does not work, install the services manually:
-```
-vagrant ssh
-cd /opt/karaf/bin
-./client </vagrant/install_scripts/fedora_camel_toolbox.script
-```
-
-## Windows Troubleshooting
+### Windows Troubleshooting
 
 If you receive errors involving `\r` (end of line):
 
