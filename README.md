@@ -49,6 +49,7 @@ To create a base box to use with Atlas the basic steps are as follows:
 - Provision the VM
  - `vagrant up`
 - Shutdown the VM
+- - `vagrant ssh`
   - `sudo shutdown -P now`
 - Export the VM to a box file 
  - `vagrant package`
