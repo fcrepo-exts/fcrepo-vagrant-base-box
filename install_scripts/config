@@ -12,7 +12,7 @@ if [ ! -d $DOWNLOAD_DIR ]; then
   mkdir $DOWNLOAD_DIR
 fi
 
-FUSEKI_VERSION=2.3.0
+FUSEKI_VERSION=2.3.1
 FUSEKI_BASE=/etc/fuseki
 FUSEKI_DEPLOY=/var/lib/tomcat7/webapps
 
