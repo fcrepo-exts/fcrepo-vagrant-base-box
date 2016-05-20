@@ -13,7 +13,7 @@ fi
 
 if [ ! -f "$DOWNLOAD_DIR/apache-jena-fuseki-$FUSEKI_VERSION-distribution.tar.gz" ]; then
   echo -n "Downloading Fuseki..."
-  wget -q -O "$DOWNLOAD_DIR/apache-jena-fuseki-$FUSEKI_VERSION-distribution.tar.gz" "http://www.us.apache.org/dist/jena/binaries/apache-jena-fuseki-$FUSEKI_VERSION.tar.gz"
+  wget -q -O "$DOWNLOAD_DIR/apache-jena-fuseki-$FUSEKI_VERSION-distribution.tar.gz" "http://archive.apache.org/dist/jena/binaries/apache-jena-fuseki-$FUSEKI_VERSION.tar.gz"
   echo " done"
 fi
 
