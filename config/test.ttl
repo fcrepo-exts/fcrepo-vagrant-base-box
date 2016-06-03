@@ -25,11 +25,11 @@ tdb:GraphTDB    rdfs:subClassOf  ja:Model .
 
 <#model> a ja:InfModel ;
     ja:baseModel <#tdbGraph> ;
+    ja:content <#fedoraInf> ;
     ja:reasoner [
         ja:reasonerURL <http://jena.hpl.hp.com/2003/OWLFBRuleReasoner>] .
 
 <#tdbGraph> a tdb:GraphTDB ;
-    ja:content <#fedoraInf> ;
     tdb:dataset <#tdbDataset> .
 
 <#tdbDataset> a tdb:DatasetTDB ;
