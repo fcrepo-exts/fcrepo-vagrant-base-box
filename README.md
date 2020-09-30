@@ -1,5 +1,5 @@
-# fcrepo4-vagrant-base-box
-This is a base box for the [Fedora 4 Vagrant Virtual Machine](https://github.com/fcrepo4-exts/fcrepo4-vagrant). A packaged box lives on [atlas](https://atlas.hashicorp.com/fcrepo/fcrepo4-base).
+# fcrepo-vagrant-base-box
+This is a base box for the [Fedora Vagrant Virtual Machine](https://github.com/fcrepo-exts/fcrepo-vagrant). 
 
 ## Requirements
 
@@ -8,8 +8,8 @@ This is a base box for the [Fedora 4 Vagrant Virtual Machine](https://github.com
 
 ## Usage
 
-1. `git clone https://github.com/fcrepo4-exts/fcrepo4-vagrant-base-box.git`
-2. `cd fcrepo4-vagrant-base-box`
+1. `git clone https://github.com/fcrepo-exts/fcrepo-vagrant-base-box.git`
+2. `cd fcrepo-vagrant-base-box`
 3. `vagrant up`
 
 You can shell into the machine with `vagrant ssh` or `ssh -p 2222 vagrant@localhost`
@@ -36,7 +36,7 @@ You can shell into the machine with `vagrant ssh` or `ssh -p 2222 vagrant@localh
 
 * Install Vagrant and VirtualBox
 * Clone this repository 
-* `cd fcrepo4-vagrant-base-box`
+* `cd fcrepo-vagrant-base-box`
 * `vagrant up`
 
 ### How to build base box for Hashicorp
@@ -44,8 +44,8 @@ You can shell into the machine with `vagrant ssh` or `ssh -p 2222 vagrant@localh
 To create a base box to use with Atlas the basic steps are as follows: 
 
 - Clone the repo 
- - `git clone https://github.com/fcrepo4-exts/fcrepo4-vagrant-base-box`
- - `fcrepo4-vagrant-base-box`
+ - `git clone https://github.com/fcrepo-exts/fcrepo-vagrant-base-box`
+ - `fcrepo-vagrant-base-box`
 - Provision the VM
  - `vagrant up`
 - Shutdown the VM
@@ -53,7 +53,7 @@ To create a base box to use with Atlas the basic steps are as follows:
   - `sudo shutdown -P now`
 - Export the VM to a box file 
  - `vagrant package`
-- [Create a new version on atlas](https://atlas.hashicorp.com/fcrepo/boxes/fcrepo4-base/versions/new)
+- [Create a new version on atlas](https://atlas.hashicorp.com/fcrepo/boxes/fcrepo-base/versions/new)
 - Add a provider (virtualbox)
 - Upload box
 
