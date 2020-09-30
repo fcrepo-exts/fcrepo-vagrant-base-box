@@ -1,5 +1,5 @@
 # fcrepo-vagrant-base-box
-This is a base box for the [Fedora 4 Vagrant Virtual Machine](https://github.com/fcrepo-exts/fcrepo-vagrant). A packaged box lives on [atlas](https://atlas.hashicorp.com/fcrepo/fcrepo-base).
+This is a base box for the [Fedora Vagrant Virtual Machine](https://github.com/fcrepo-exts/fcrepo-vagrant). 
 
 ## Requirements
 
